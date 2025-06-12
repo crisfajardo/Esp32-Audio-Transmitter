@@ -1,34 +1,3 @@
-// ESP32 RECEPTOR (RX) - Recepción Bluetooth y Reproducción de Audio
-// Complemento del sistema transmisor Bluetooth
-
-#include "BluetoothSerial.h"
-#include <driver/i2s.h>
-#include <math.h>
-
-// Configuración Bluetooth
-BluetoothSerial SerialBT;
-const char* btName = "ESP32_Audio_RX";
-const char* targetDeviceName = "ESP32_Audio_TX";
-
-// Configuración I2S para reproducción
-#define I2S_WS 25
-#define I2S_SD 26
-#define I2S_SCK 27
-#define I2S_PORT I2S_NUM_0
-#define I2S_SAMPLE_RATE 16000
-#define I2S_SAMPLE_BITS 16
-
-// Parámetros de procesamiento
-#define BUFFER_SIZE 512
-#define PCM_BITS 16
-#define MAX_AMPLITUDE ((1 << (PCM_BITS - 1)) - 1)
-#define PACKET_HEADER 0xAA55
-#define AUDIO_BUFFER_SIZE 2048
-
-// Estructura de paquete (debe coincidir con TX)
-struct AudioPacket {
- …
-receptor
 // ESP32 TRANSMISOR (TX) - Procesamiento de Audio y Transmisión Bluetooth
 // Sistema de comunicación por Bluetooth Classic
 
